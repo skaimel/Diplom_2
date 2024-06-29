@@ -16,7 +16,7 @@ class TestUpdateUser:
         response_update_user = UserApi.update_user(token, update_body)
 
         assert (
-            response_update_user.status_code == 200
+            response_update_user.status_code == data.HTTP_OK
             and response_update_user.json()['success'] is True
             and response_update_user.json()['user']['email'] == data.UPDATE_USER_BODY.get('email')
             and response_update_user.json()['user']['name'] == data.UPDATE_USER_BODY.get('name')
@@ -31,7 +31,7 @@ class TestUpdateUser:
         response_update_user = UserApi.update_user(token, update_body)
 
         assert (
-            response_update_user.status_code == 401
+            response_update_user.status_code == data.HTTP_UNAUTHORIZED
             and response_update_user.json()['success'] is False
             and response_update_user.json()['message'] == data.UNAUTHORIZED_ERROR
         )
@@ -43,7 +43,7 @@ class TestUpdateUser:
         response_update_user = UserApi.update_user_mail_of_already_registered_user(get_default_update_user)
 
         assert (
-            response_update_user.status_code == 403
+            response_update_user.status_code == data.HTTP_FORBIDDEN
             and response_update_user.json()['success'] is False
             and response_update_user.json()['message'] == data.SUCH_EMAIL_ALREADY_EXISTS
         )

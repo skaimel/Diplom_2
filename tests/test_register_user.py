@@ -12,7 +12,7 @@ class TestRegisterUser:
         response_register_user = UserApi.register_user(get_default_user)
 
         assert (
-            response_register_user.status_code == 200
+            response_register_user.status_code == data.HTTP_OK
             and response_register_user.json()['success'] is True
             and response_register_user.json()["user"] is not None
         )
@@ -24,7 +24,7 @@ class TestRegisterUser:
         response_register_user_already_registered = UserApi.register_user(get_default_user)
 
         assert (
-            response_register_user_already_registered.status_code == 403
+            response_register_user_already_registered.status_code == data.HTTP_FORBIDDEN
             and response_register_user_already_registered.json()['success'] is False
             and response_register_user_already_registered.json()['message'] == data.USER_ALREADY_EXISTS
         )
@@ -44,7 +44,7 @@ class TestRegisterUser:
         response_register_user_with_empty_required_field = UserApi.register_user(body)
 
         assert (
-            response_register_user_with_empty_required_field.status_code == 403
+            response_register_user_with_empty_required_field.status_code == data.HTTP_FORBIDDEN
             and response_register_user_with_empty_required_field.json()['success'] is False
             and response_register_user_with_empty_required_field.json()['message'] == data.ERROR_REQUIRED_FIELDS
         )

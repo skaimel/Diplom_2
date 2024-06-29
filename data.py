@@ -74,3 +74,10 @@ SUCH_EMAIL_ALREADY_EXISTS = 'User with such email already exists'
 EMAIL_PASSWORD_INCORRECT = 'email or password are incorrect'
 USER_ALREADY_EXISTS = 'User already exists'
 ERROR_REQUIRED_FIELDS = 'Email, password and name are required fields'
+
+# HTTP статус код
+HTTP_OK = 200
+HTTP_BAD_REQUEST = 400
+HTTP_UNAUTHORIZED = 401
+HTTP_FORBIDDEN = 403
+HTTP_INTERNAL_SERVER_ERROR = 500

@@ -13,7 +13,7 @@ class TestLoginUser:
         response_login_user = UserApi.login_user(body)
 
         assert (
-            response_login_user.status_code == 200
+            response_login_user.status_code == data.HTTP_OK
             and response_login_user.json()['success'] is True
             and response_login_user.json()["user"] is not None
         )
@@ -26,7 +26,7 @@ class TestLoginUser:
         response_login_user = UserApi.login_user(body)
 
         assert (
-            response_login_user.status_code == 401
+            response_login_user.status_code == data.HTTP_UNAUTHORIZED
             and response_login_user.json()['success'] is False
             and response_login_user.json()["message"] == data.EMAIL_PASSWORD_INCORRECT
         )
@@ -39,7 +39,7 @@ class TestLoginUser:
         response_login_user = UserApi.login_user(body)
 
         assert (
-            response_login_user.status_code == 401
+            response_login_user.status_code == data.HTTP_UNAUTHORIZED
             and response_login_user.json()['success'] is False
             and response_login_user.json()["message"] == data.EMAIL_PASSWORD_INCORRECT
         )
@@ -52,7 +52,7 @@ class TestLoginUser:
         response_login_user = UserApi.login_user(body)
 
         assert (
-            response_login_user.status_code == 401
+            response_login_user.status_code == data.HTTP_UNAUTHORIZED
             and response_login_user.json()['success'] is False
             and response_login_user.json()["message"] == data.EMAIL_PASSWORD_INCORRECT
         )
@@ -65,7 +65,7 @@ class TestLoginUser:
         response_login_user = UserApi.login_user(body)
 
         assert (
-            response_login_user.status_code == 401
+            response_login_user.status_code == data.HTTP_UNAUTHORIZED
             and response_login_user.json()['success'] is False
             and response_login_user.json()["message"] == data.EMAIL_PASSWORD_INCORRECT
         )

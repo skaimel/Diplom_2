@@ -17,7 +17,7 @@ class TestOrders:
         response_get_orders = OrderApi.get_orders(token)
 
         assert (
-            response_get_orders.status_code == 200
+            response_get_orders.status_code == data.HTTP_OK
             and response_get_orders.json()['success'] is True
             and response_get_orders.json()['orders'] is not None
         )
@@ -29,7 +29,7 @@ class TestOrders:
         response_get_orders = OrderApi.get_orders(token)
 
         assert (
-            response_get_orders.status_code == 401
+            response_get_orders.status_code == data.HTTP_UNAUTHORIZED
             and response_get_orders.json()['success'] is False
             and response_get_orders.json()['message'] == data.UNAUTHORIZED_ERROR
         )
